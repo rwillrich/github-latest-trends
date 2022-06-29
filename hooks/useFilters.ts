@@ -4,6 +4,8 @@ export type FiltersState = {
   onlyStarred: boolean
 }
 
+const pickTruthyProperties = <T>(obj: T) => Object.fromEntries(Object.entries(obj).filter(([, value]) => value != false))
+
 export const useFilters = (): [FiltersState, (newFilters: FiltersState) => void] => {
   const router = useRouter()
 
@@ -11,7 +13,7 @@ export const useFilters = (): [FiltersState, (newFilters: FiltersState) => void]
 
   const filters: FiltersState = { onlyStarred: onlyStarred === 'true' }
   const updateFilters = (newFilters: FiltersState) => {
-    router.push({ query: { ...filters, ...newFilters } })
+    router.push({ query: pickTruthyProperties<FiltersState>({ ...filters, ...newFilters }) })
   }
 
   return [filters, updateFilters]
