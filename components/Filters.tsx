@@ -7,9 +7,9 @@ export const Filters = ({ }: FiltersProps) => {
 
   return (
     <div>
-      <button onClick={() => updateFilters({ onlyStarred: true })} disabled={filters.onlyStarred}>Starred Only</button>
-      {' '}
       <button onClick={() => updateFilters({ onlyStarred: false })} disabled={!filters.onlyStarred}>Show all</button>
+      {' '}
+      <button onClick={() => updateFilters({ onlyStarred: true })} disabled={filters.onlyStarred}>Starred Only</button>
     </div>
   )
 }
