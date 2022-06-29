@@ -34,9 +34,13 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
           <ul>
             {data.items.map(repo => (
               <li key={repo.id}>
-                <h2>{repo.name}</h2>
-                <p>{repo.description}</p>
-                <p>Stars: {repo.stars}</p>
+                <a href={repo.link}>
+                  <h2>{repo.name}</h2>
+                  {repo.description && (
+                    <p>{repo.description}</p>
+                  )}
+                  <p>Stars: {repo.stars}</p>
+                </a>
               </li>
             ))}
           </ul>
