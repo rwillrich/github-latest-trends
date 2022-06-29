@@ -12,7 +12,7 @@ export const RepoInfo = ({ repo }: RepoInfoProps) => {
         <p>{repo.description}</p>
       )}
       <p>Stars: {repo.stars}</p>
-      <a title={`See '${repo.name}' details`} href={repo.link} target="_blank" rel="noopener">More details</a>
+      <a title={`See '${repo.name}' details`} href={repo.link} target="_blank" rel="noopener">{repo.link}</a>
     </div>
   )
 }
