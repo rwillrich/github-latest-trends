@@ -20,7 +20,8 @@ export const toRepo = (item: GithubRepo): Repo => {
     name: item.name,
     description: item.description,
     link: item.html_url,
-    stars: item.stargazers_count
+    stars: item.stargazers_count,
+    starred: false
   }
 }
 
