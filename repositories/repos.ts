@@ -14,6 +14,6 @@ export const getLatestTrends = (
   { page = 1, perPage = 20 }: { page?: number, perPage?: number } = {},
   fetch: FetchFN<GithubResult<GithubRepo>> = fetchRepos
 ): Promise<Paginated<Repo>> => {
-  return fetch(`?q=created:${format(subDays(new Date(), 7), '>yyyy-MM-dd')}&sort=stars&order=desc`)
+  return fetch(`?q=created:${format(subDays(new Date(), 7), '>=yyyy-MM-dd')}&sort=stars&order=desc`)
     .then(toPaginated<GithubRepo, Repo>(page, perPage, toRepo))
 }

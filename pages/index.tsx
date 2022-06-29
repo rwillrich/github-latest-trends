@@ -38,7 +38,7 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
   )
 }
 
-export async function getServerSideProps(): Promise<GetServerSidePropsResult<HomeProps>> {
+export function getServerSideProps(): Promise<GetServerSidePropsResult<HomeProps>> {
   return getLatestTrends()
     .then(data => ({ props: { data } }))
     .catch(error => ({ props: { error } }))
