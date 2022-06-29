@@ -7,6 +7,7 @@ import styles from '../styles/Home.module.css'
 import { Paginated } from '../entities/paginated'
 import { Repo } from '../entities/repo'
 import { getLatestTrends } from '../repositories/repos'
+import { RepoList } from '../components/RepoList'
 
 type HomeProps = {
   data?: Paginated<Repo>,
@@ -31,19 +32,7 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
         )}
 
         {data && (
-          <ul>
-            {data.items.map(repo => (
-              <li key={repo.id}>
-                <a href={repo.link}>
-                  <h2>{repo.name}</h2>
-                  {repo.description && (
-                    <p>{repo.description}</p>
-                  )}
-                  <p>Stars: {repo.stars}</p>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <RepoList items={data.items} />
         )}
       </main>
     </div>
