@@ -16,7 +16,7 @@ export const RepoInfo = ({ repo, onStarredChange = () => { } }: RepoInfoProps) =
         <p>{repo.description}</p>
       )}
       <Star filled={repo.starred} className={styles.star} onClick={() => onStarredChange(!repo.starred)}>{repo.stars}</Star>
-      <a title={`See '${repo.name}' details`} href={repo.link} target="_blank" rel="noopener">{repo.link}</a>
+      <a title={`See '${repo.name}' details`} href={repo.link} target="_blank" rel="noreferrer">{repo.link}</a>
     </div>
   )
 }
