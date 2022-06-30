@@ -18,7 +18,8 @@ export const Filters = ({ languages = [] }: FiltersProps) => {
       <select
         name="language"
         id="Filters-language"
-        onChange={(e) => updateFilters({ languages: e.target.value === '' ? [] : [e.target.value] })}>
+        value={filters.language || ''}
+        onChange={(e) => updateFilters({ language: e.target.value === '' ? undefined : e.target.value })}>
         <option value="">All</option>
         {languages.map(language => (
           <option value={language} key={language}>{language}</option>

@@ -1,4 +1,4 @@
-import type { GetServerSidePropsResult, NextPage } from 'next'
+import type { GetServerSidePropsResult, NextPage, NextPageContext } from 'next'
 import Head from 'next/head'
 
 import styles from '../styles/Home.module.css'
@@ -38,8 +38,9 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
   )
 }
 
-export function getServerSideProps(): Promise<GetServerSidePropsResult<HomeProps>> {
-  return getLatestTrends()
+export function getServerSideProps({ query }: NextPageContext): Promise<GetServerSidePropsResult<HomeProps>> {
+  const { language } = query
+  return getLatestTrends({ language: Array.isArray(language) ? language[0] : language })
     .then(data => ({ props: { data } }))
     .catch(error => ({ props: { error } }))
 }

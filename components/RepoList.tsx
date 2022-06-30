@@ -13,9 +13,9 @@ export type RepoListProps = {
 }
 
 export const RepoList = ({ items }: RepoListProps) => {
+  const languages = useLanguages(items)
   const [repos, updateStarred] = useReposWithStarredData(items)
   const filteredRepos = useFilteredRepos(repos)
-  const languages = useLanguages(filteredRepos)
 
   return (
     <>
