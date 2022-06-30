@@ -22,9 +22,9 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Github Latest Trends</h1>
-        <p>List of trending repos from the last 7 days sorted by the number of stars.</p>
+      <main className={styles.main}>
+        <h1 className={styles.title}>Github Latest Trends</h1>
+        <p className={styles.description}>List of trending repos from the last 7 days sorted by the number of stars.</p>
 
         {error && (
           <p>{error.message}</p>

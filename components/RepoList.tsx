@@ -1,3 +1,5 @@
+import styles from './RepoList.module.css'
+
 import { Repo } from '../entities/repo'
 import { useReposWithStarredData } from '../hooks/useReposWithStarredData'
 import { useFilteredRepos } from '../hooks/useFilteredRepos'
@@ -16,7 +18,7 @@ export const RepoList = ({ items }: RepoListProps) => {
   return (
     <>
       <Filters />
-      <ul>
+      <ul className={styles.list}>
         {filteredRepos.map(repo => (
           <li key={repo.id}>
             <RepoInfo

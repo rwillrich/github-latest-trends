@@ -1,0 +1,34 @@
+.button {
+  color: #a7a7a7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 3px;
+  padding: 0 8px;
+  min-width: 70px;
+  border: 1px solid #eaeaea;
+  box-shadow: inset -2px -2px #eaeaea;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+}
+
+.button:hover,
+.button:focus,
+.button:active {
+  color: #a7a7a7;
+  border-color: #a7a7a7;
+  box-shadow: inset -2px -2px #a7a7a7;
+}
+
+.icon {
+  display: block;
+  font-size: 1.6em;
+  padding-bottom: 4px;
+  margin-right: 2px;
+}
+
+.filled {
+  color: #f1e05a;
+}
