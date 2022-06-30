@@ -6,5 +6,6 @@ export type Repo = {
   description: string,
   link: string,
   stars: number,
-  starred: boolean
+  starred: boolean,
+  languages: Array<string>
 }

@@ -6,7 +6,8 @@ export type GithubRepo = {
   name: string,
   description: string,
   html_url: string,
-  stargazers_count: number
+  stargazers_count: number,
+  language: string
 }
 
 export type GithubResult<T> = {
@@ -21,7 +22,8 @@ export const toRepo = (item: GithubRepo): Repo => {
     description: item.description,
     link: item.html_url,
     stars: item.stargazers_count,
-    starred: false
+    starred: false,
+    languages: [item.language]
   }
 }
 

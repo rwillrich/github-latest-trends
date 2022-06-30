@@ -1,7 +1,8 @@
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router'
 
 export type FiltersState = {
-  onlyStarred: boolean
+  onlyStarred?: boolean,
+  languages?: Array<string>
 }
 
 const pickTruthyProperties = <T>(obj: T) => Object.fromEntries(Object.entries(obj).filter(([, value]) => value != false))
@@ -9,9 +10,12 @@ const pickTruthyProperties = <T>(obj: T) => Object.fromEntries(Object.entries(ob
 export const useFilters = (): [FiltersState, (newFilters: FiltersState) => void] => {
   const router = useRouter()
 
-  const { onlyStarred } = router.query
+  const { onlyStarred, languages } = router.query
 
-  const filters: FiltersState = { onlyStarred: onlyStarred === 'true' }
+  const filters: FiltersState = {
+    onlyStarred: onlyStarred === 'true',
+    languages: typeof languages === 'string' ? [languages] : languages
+  }
   const updateFilters = (newFilters: FiltersState) => {
     router.push({ query: pickTruthyProperties<FiltersState>({ ...filters, ...newFilters }) })
   }
