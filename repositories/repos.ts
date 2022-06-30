@@ -2,7 +2,7 @@ import { format, subDays } from 'date-fns'
 import { GithubRepo, GithubResult, toPaginated, toRepo } from '../entities/github'
 
 import { base, createFetch, FetchFN, parseJson } from '../lib/composable-fetch'
-import { Repo, RepoId } from '../entities/repo'
+import { Repo } from '../entities/repo'
 import { Paginated } from '../entities/paginated'
 
 const fetchRepos = createFetch(
