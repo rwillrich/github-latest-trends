@@ -39,8 +39,8 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
 }
 
 export function getServerSideProps({ query }: NextPageContext): Promise<GetServerSidePropsResult<HomeProps>> {
-  const { language } = query
-  return getLatestTrends({ language: Array.isArray(language) ? language[0] : language })
+  const { language, sortOrder } = query
+  return getLatestTrends({ language: Array.isArray(language) ? language[0] : language, sortOrder: sortOrder as ('asc' | 'desc') })
     .then(data => ({ props: { data } }))
     .catch(error => ({ props: { error } }))
 }

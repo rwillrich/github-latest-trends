@@ -15,6 +15,14 @@ export const Filters = ({ languages = [] }: FiltersProps) => {
       {' '}
       <button onClick={() => updateFilters({ onlyStarred: true })} disabled={filters.onlyStarred}>Starred Only</button>
       {' '}
+      <label htmlFor="sortOrder">Sort</label>
+      {filters.sortOrder === 'asc' && (
+        <button id='sortOrder' onClick={() => { updateFilters({ sortOrder: 'desc' }) }}>Desc</button>
+      )}
+      {filters.sortOrder === 'desc' && (
+        <button id='sortOrder' onClick={() => { updateFilters({ sortOrder: 'asc' }) }}>Asc</button>
+      )}
+      {' '}
       <select
         name="language"
         id="Filters-language"
