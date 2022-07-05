@@ -7,6 +7,7 @@ import { Paginated } from '../entities/paginated'
 import { Repo } from '../entities/repo'
 import { getLatestTrends } from '../repositories/repos'
 import { RepoList } from '../components/RepoList'
+import { toFilters } from '../hooks/useFilters'
 
 type HomeProps = {
   data?: Paginated<Repo>,
@@ -39,8 +40,8 @@ const Home: NextPage<HomeProps> = ({ data, error }) => {
 }
 
 export function getServerSideProps({ query }: NextPageContext): Promise<GetServerSidePropsResult<HomeProps>> {
-  const { language, sortOrder } = query
-  return getLatestTrends({ language: Array.isArray(language) ? language[0] : language, sortOrder: sortOrder as ('asc' | 'desc') })
+  const { language, sortOrder } = toFilters(query)
+  return getLatestTrends({ language, sortOrder })
     .then(data => ({ props: { data } }))
     .catch(error => ({ props: { error } }))
 }
